@@ -12,7 +12,7 @@ public:
 	// Конструктор с параметрами.
 	quadratic_equation(double a, double b, double c) { this->a = a;	this->b = b; this->c = c; }
 	// Конструктор по умолчанию.
-	quadratic_equation() : quadratic_equation(0.0, 0.0, 0.0) {}
+	quadratic_equation() : quadratic_equation(0., 0., 0.) {}
 
 	// Методы доступа к закрытым полям класса.
 	double get_a() const { return a; }
