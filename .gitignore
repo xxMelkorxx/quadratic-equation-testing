@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+/.vs/quadratic-equation-testing
+/quadratic-equation-testing/x64
+/testing/x64
+/x64
