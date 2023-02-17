@@ -5,7 +5,7 @@ RESULT_QE quadratic_equation::solve(std::complex<double>& x1, std::complex<doubl
 {
 	if (a == 0) return NOT_LINEAR;
 	else {
-		double d = b * b - 4. * a * c;		// Вычисление дискриминанта.
+		double d = b * b - 4. * a * c;		// Calculation of the discriminant.
 		if (d > 0) {
 			x1 = std::complex<double>((-b + sqrt(d)) / (2. * a));
 			x2 = std::complex<double>((-b - sqrt(d)) / (2. * a));
