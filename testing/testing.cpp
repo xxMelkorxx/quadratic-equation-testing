@@ -13,7 +13,7 @@ namespace testing
 		{
 			quadratic_equation qe;
 
-			Logger::WriteMessage(L"A test to check the work of the default constructor.");
+			Logger::WriteMessage(L"Тест на проверку работы конструктора по умолчанию.");
 			Assert::IsTrue(qe.get_a() == 0);
 			Assert::IsTrue(qe.get_b() == 0);
 			Assert::IsTrue(qe.get_c() == 0);
@@ -24,7 +24,7 @@ namespace testing
 			double a = 1, b = 2, c = 3;
 			quadratic_equation qe(a, b, c);
 
-			Logger::WriteMessage(L"A test to check how the constructor works with parameters.");
+			Logger::WriteMessage(L"Тест на проверку работы конструктора.");
 			Assert::IsTrue(qe.get_a() == a);
 			Assert::IsTrue(qe.get_b() == b);
 			Assert::IsTrue(qe.get_c() == c);
@@ -38,7 +38,7 @@ namespace testing
 			qe.set_b(b);
 			qe.set_c(c);
 
-			Logger::WriteMessage(L"A test for the operation of parameter assignment methods.");
+			Logger::WriteMessage(L"Тест на работу методов присвоения параметров.");
 			Assert::IsTrue(qe.get_a() == a);
 			Assert::IsTrue(qe.get_b() == b);
 			Assert::IsTrue(qe.get_c() == c);
@@ -51,7 +51,7 @@ namespace testing
 		TEST_METHOD(RandomParameterSolverTest_AbsoluteIdentity)
 		{
 			quadratic_equation qe;
-			Logger::WriteMessage(L"Checking that: a*x*x + b*x + c == 0 (a != 0; b, c - random numbers)");
+			Logger::WriteMessage(L"Проверка, что: a*x*x + b*x + c == 0 (a != 0; b, с в диапазоне (-1; 1))");
 			for (int i = 0; i < 1000; i++) {
 				qe.setRandom_abc(-10, 10, 3);
 				std::complex<double> x1, x2;
@@ -70,10 +70,10 @@ namespace testing
 
 		TEST_METHOD(RandomParameterSolverTest_ApproxIdentity)
 		{
-			const double accuracy = 1e-20;
+			const double accuracy = 1e-20;	// Точность.
 
 			quadratic_equation qe;
-			Logger::WriteMessage(L"Checking that: -1e-10 < a*x*x + b*x + c < 1e-10 (a != 0; b, c - random numbers)");
+			Logger::WriteMessage(L"Проверка, что: -1e-10 < a*x*x + b*x + c < 1e-10 (a != 0; b, с в диапазоне (-1; 1))");
 			for (int i = 0; i < 1000; i++) {
 				qe.setRandom_abc(-10, 10, 3);
 				std::complex<double> x1, x2;
@@ -96,7 +96,7 @@ namespace testing
 			std::complex<double> x1, x2;
 			RESULT_QE result = qe.solve(x1, x2);
 
-			Logger::WriteMessage(L"The case when the discriminantis 0 and the root is whole.");
+			Logger::WriteMessage(L"Случай, когда дискриминант равен 0, а корень целый.");
 			Assert::IsTrue(result == ONE_ROOT, L"Assert on number of roots");
 			Assert::IsTrue(x1 == std::complex<double>(-1, 0));
 			Assert::IsTrue(x1 == x2);
@@ -109,7 +109,7 @@ namespace testing
 			std::complex<double> x1, x2;
 			RESULT_QE result = qe.solve(x1, x2);
 
-			Logger::WriteMessage(L"The case when the discriminant is 0 and the root is fractional.");
+			Logger::WriteMessage(L"Случай, когда дискриминант равен 0, а корень дробный.");
 			Assert::IsTrue(result == ONE_ROOT, L"Assert on number of roots");
 			Assert::IsTrue(x1 == std::complex<double>(1. / 3, 0));
 			Assert::IsTrue(x1 == x2);
@@ -122,7 +122,7 @@ namespace testing
 			std::complex<double> x1, x2;
 			RESULT_QE result = qe.solve(x1, x2);
 
-			Logger::WriteMessage(L"The case when the discriminant is positive and the roots are whole.");
+			Logger::WriteMessage(L"Случай, когда дискриминант положительный, а корни целые.");
 			Assert::IsTrue(result == TWO_ROOTS_NOT_COMPLEX, L"Assert on number of roots");
 			Assert::IsTrue(x1 == std::complex<double>(-1, 0));
 			Assert::IsTrue(x2 == std::complex<double>(8, 0));
@@ -135,7 +135,7 @@ namespace testing
 			std::complex<double> x1, x2;
 			RESULT_QE result = qe.solve(x1, x2);
 
-			Logger::WriteMessage(L"The case when the discriminant is negative and the roots are complex.");
+			Logger::WriteMessage(L"Случай, когда дискриминант отрицательный, а корни комплексные.");
 			Assert::IsTrue(result == TWO_ROOTS_COMPLEX, L"Assert on number of roots");
 			Assert::IsTrue(x1 == std::complex<double>(-0.5, 0.5));
 			Assert::IsTrue(x2 == std::complex<double>(-0.5, -0.5));
@@ -148,7 +148,7 @@ namespace testing
 			std::complex<double> x1, x2;
 			RESULT_QE result = qe.solve(x1, x2);
 
-			Logger::WriteMessage(L"The case when the parameters: b = 0, c = 0.");
+			Logger::WriteMessage(L"Случай, когда параметры b = 0, c = 0.");
 			Assert::IsTrue(result == ONE_ROOT, L"Assert on number of roots");
 			Assert::IsTrue(x1 == std::complex<double>(0, 0));
 			Assert::IsTrue(x1 == x2);
@@ -161,7 +161,7 @@ namespace testing
 			std::complex<double> x1, x2;
 			RESULT_QE result = qe.solve(x1, x2);
 
-			Logger::WriteMessage(L"The case when the parameter: c = 0.");
+			Logger::WriteMessage(L"Случай, когда параметр c = 0.");
 			Assert::IsTrue(result == TWO_ROOTS_NOT_COMPLEX, L"Assert on number of roots");
 			Assert::IsTrue(x1 == std::complex<double>(0, 0));
 			Assert::IsTrue(x2 == std::complex<double>(-2, 0));
@@ -174,7 +174,7 @@ namespace testing
 			std::complex<double> x1, x2;
 			RESULT_QE result = qe.solve(x1, x2);
 
-			Logger::WriteMessage(L"The case when the parameter: b = 0.");
+			Logger::WriteMessage(L"Случай, когда параметр b = 0.");
 			Assert::IsTrue(result == TWO_ROOTS_NOT_COMPLEX, L"Assert on number of roots");
 			Assert::IsTrue(x1 == std::complex<double>(2, 0));
 			Assert::IsTrue(x2 == std::complex<double>(-2, 0));
@@ -187,7 +187,7 @@ namespace testing
 			std::complex<double> x1, x2;
 			RESULT_QE result = qe.solve(x1, x2);
 
-			Logger::WriteMessage(L"The case when the parameter: b = 0, and the roots are complex.");
+			Logger::WriteMessage(L"Случай, когда параметр b = 0, а корни комплексные.");
 			Assert::IsTrue(result == TWO_ROOTS_COMPLEX, L"Assert on number of roots");
 			Assert::IsTrue(x1 == std::complex<double>(0, 2));
 			Assert::IsTrue(x2 == std::complex<double>(0, -2));
@@ -200,7 +200,7 @@ namespace testing
 			std::complex<double> x1, x2;
 			RESULT_QE result = qe.solve(x1, x2);
 
-			Logger::WriteMessage(L"The case when: a == 0 && b != 0 && c != 0 - linear equation.");
+			Logger::WriteMessage(L"Случай, когда a == 0 && b != 0 && c != 0 - линейное уравнение.");
 			Assert::IsTrue(result == NOT_LINEAR, L"Assert for linearity");
 		}
 	};

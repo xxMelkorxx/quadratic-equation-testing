@@ -4,6 +4,8 @@ using namespace std;
 
 int main()
 {
+	setlocale(LC_ALL, "russian");
+
 	quadratic_equation qe;
 	for (int i = 0; i < 100; i++) {
 		qe.setRandom_abc(-10, 10, 3);
