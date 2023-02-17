@@ -51,7 +51,7 @@ namespace testing
 		TEST_METHOD(RandomParameterSolverTest_AbsoluteIdentity)
 		{
 			quadratic_equation qe;
-			Logger::WriteMessage(L"Checking that: a*x*x + b*x + c == 0 (a != 0; b, ñ - random numbers)");
+			Logger::WriteMessage(L"Checking that: a*x*x + b*x + c == 0 (a != 0; b, c - random numbers)");
 			for (int i = 0; i < 1000; i++) {
 				qe.setRandom_abc(-10, 10, 3);
 				std::complex<double> x1, x2;
