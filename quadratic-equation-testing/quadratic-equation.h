@@ -2,11 +2,25 @@
 
 #pragma once
 
+enum RESULT_QE {
+	NOT_LINEAR,
+	ONE_ROOT,
+	TWO_ROOTS_NOT_COMPLEX,
+	TWO_ROOTS_COMPLEX
+};
+
 // Класс реализации квадратного уравнения.
 class quadratic_equation
 {
 private:
 	double a, b, c;
+
+	// Функция, которая генерирует случайное число с плавающей запятой и указанной точностью
+	// Функция получает 3 параметра:
+	// - min - нижний предел;
+	// - max - верхний предел;
+	// - precision - точность, количество знаков после запятой.
+	double getRandomNumber(double min, double max, int precision);
 
 public:
 	// Конструктор с параметрами.
@@ -23,7 +37,8 @@ public:
 	void set_a(double a) { this->a = a; }
 	void set_b(double b) { this->b = b; }
 	void set_c(double c) { this->c = c; }
+	void setRandom_abc(double min, double max, int precision);
 
 	// Метод получения решения квдаратного уравнения.
-	void solve(std::complex<double>& x1, std::complex<double>& x2);
+	RESULT_QE solve(std::complex<double>& x1, std::complex<double>& x2);
 };
