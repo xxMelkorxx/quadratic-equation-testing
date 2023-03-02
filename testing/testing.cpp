@@ -60,7 +60,7 @@ namespace testing
 				double b = qe.get_b();
 				double c = qe.get_c();
 
-				Assert::IsTrue(result != NOT_LINEAR, L"Assert for linearity");
+				Assert::IsTrue(result != NOT_QUADRATIC_EQUATION, L"Assert for linearity");
 				Assert::IsTrue(
 					a * x1 * x1 + b * x1 + c == std::complex<double>(0, 0) &&
 					a * x2 * x2 + b * x2 + c == std::complex<double>(0, 0),
@@ -84,7 +84,7 @@ namespace testing
 				double magn_1 = pow((a * x1 * x1 + b * x1 + c).real(), 2) + pow((a * x1 * x1 + b * x1 + c).imag(), 2);
 				double magn_2 = pow((a * x2 * x2 + b * x2 + c).real(), 2) + pow((a * x2 * x2 + b * x2 + c).imag(), 2);
 
-				Assert::IsTrue(result != NOT_LINEAR, L"Assert for linearity");
+				Assert::IsTrue(result != NOT_QUADRATIC_EQUATION, L"Assert for linearity");
 				Assert::IsTrue((magn_1 < accuracy) && (magn_1 > -accuracy) && (magn_2 < accuracy) && (magn_2 > -accuracy), L"Assert identity");
 			}
 		}
@@ -201,7 +201,7 @@ namespace testing
 			RESULT_QE result = qe.solve(x1, x2);
 
 			Logger::WriteMessage(L"The case when: a == 0 && b != 0 && c != 0 - linear equation.");
-			Assert::IsTrue(result == NOT_LINEAR, L"Assert for linearity");
+			Assert::IsTrue(result == NOT_QUADRATIC_EQUATION, L"Assert for linearity");
 		}
 	};
 }

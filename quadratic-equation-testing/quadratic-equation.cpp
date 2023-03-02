@@ -3,7 +3,7 @@
 
 RESULT_QE quadratic_equation::solve(std::complex<double>& x1, std::complex<double>& x2)
 {
-	if (a == 0) return NOT_LINEAR;
+	if (a == 0) return NOT_QUADRATIC_EQUATION;
 	else {
 		double d = b * b - 4. * a * c;		// Calculation of the discriminant.
 		if (d > 0) {
